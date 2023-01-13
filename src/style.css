@@ -1,0 +1,81 @@
+.btn {
+    @apply font-bold py-2 px-4 rounded;
+}
+
+.btn-blue {
+    @apply bg-blue-500 text-white;
+}
+
+.btn-blue:hover {
+    @apply bg-blue-700;
+}
+
+.disc {
+    text-align: center;
+    border-radius: 0.8rem;
+    padding: 0;
+    cursor: move;
+}
+
+.hanoi-pin {
+    border: 1px solid lightgray;
+    /* background-color: rgb(208, 208, 208); */
+}
+
+.hanoi-pin-highlight {
+    border-color: #d9534f;
+    background-color: rgb(237, 237, 237);
+}
+
+.box.over {
+    border: 1px dotted #666;
+}
+
+#one {
+    margin-left: 12rem;
+    margin-right: 12rem;
+    width: 3rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(52 211 153 / var(--tw-bg-opacity));
+}
+
+#two {
+    margin-left: 12rem;
+    margin-right: 12rem;
+    width: 3.5rem;
+
+    --tw-bg-opacity: 1;
+    background-color: rgb(167 139 250 / var(--tw-bg-opacity));
+}
+
+#three {
+    margin-left: 12rem;
+    margin-right: 12rem;
+    width: 4rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(253 224 71 / var(--tw-bg-opacity));
+}
+
+#four {
+    margin-left: 12rem;
+    margin-right: 12rem;
+    width: 5rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+}
+
+#five {
+    margin-left: 12rem;
+    margin-right: 12rem;
+    width: 6rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(217 119 6 / var(--tw-bg-opacity));
+}
+
+#six {
+    margin-left: 12rem;
+    margin-right: 12rem;
+    width: 7rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(236 72 153 / var(--tw-bg-opacity));
+}

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8" />
+    <link href="output.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="res/favicon.ico" />
+    <title>Incode Alan garcia</title>
+    <meta name="description" content="AlanGarcia" />
+</head>
+
+<body>
+
+
+    <div class="container mx-auto">
+        <div class="relative flex ">
+            <img src="../res/Incode Black.svg" class="w-36" />
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                onclick="towerofHanoi(3, `A`, `C`, `B`)"> start</button>
+
+        </div>
+
+        <div class="">
+            <h1 class="display-3">The Towers of Hanoi</h1>
+            <p class="lead">Welcome to The Towers of Hanoi</p>
+            <hr class="my-2">
+            <div class="mt-4 mb-3 bg-slate-200">
+                <code class="language-html ">
+                    <span class="token tag">function towerofHanoi(n, fromRod, toRod, usingRod) {
+                        <p class="token punctuation">&nbsp;if (n == 1){<br/>
+                            &ensp;console.log(`Take disk 1 from rod ${fromRod} to ${toRod}`)<br/>
+                            &nbsp;return<br/>
+                        }</p>
+                      <p>&nbsp;towerofHanoi(n-1, fromRod, usingRod, toRod)<br/></p>
+                      <p>&nbsp;console.log(`Take disk ${n} from rod ${fromRod} to ${toRod}`)<br/></p>
+                      <p>&nbsp;towerofHanoi(n-1, usingRod, toRod, fromRod)<br/></p>
+                    }
+                    </span>
+
+                   <br><br>call to Action:   towerofHanoi(3, `A`, `C`, `B`)
+                </code>
+            </div>
+
+            <h1>You feel lucky? Please play with my tower of hanoi puzzle</h1>
+            <h3>Drag and drop the elements</h3>
+            <ul>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
+        <div class="grid grid-cols-3 gap-6" id="hanoi-alan">
+            <div id="left" class="col-sm-4  hanoi-pin">
+                <!-- empty spaces  -->
+                <div class="row"><div class="box">&nbsp;</div></div>
+                <div class="row"><div class="box">&nbsp;</div></div>
+                <div class="row"><div class="box">&nbsp;</div></div>
+                <!-- empty spaces  -->
+
+                <div class="row">
+                    <div class="disc box" draggable="true" id="one">1</div>
+                </div>
+                <div class="row">
+                    <div class="disc box" draggable="true" id="two">2</div>
+                </div>
+                <div class="row">
+                    <div class="disc box" draggable="true" id="three">3</div>
+                </div>
+                <!-- <div class="row">
+                    <div class="disc box" draggable="true" id="four">4</div>
+                </div>
+                <div class="row">
+                    <div class="disc box" draggable="true" id="five">5</div>
+                </div>
+                <div class="row">
+                    <div class="disc box" draggable="true" id="six">6</div>
+                </div> -->
+            </div>
+
+            <div id="center" class="col-sm-4 hanoi-pin">
+                <div class="row">
+                    <div class="box">&nbsp;</div> <!-- 1 -->
+                </div>
+                <div class="row">
+                    <div class="box">&nbsp;</div><!-- 2 -->
+                </div>
+                <div class="row">
+                    <div class="box">&nbsp;</div><!-- 3 -->
+                </div>
+                <div class="row">
+                    <div class="box">&nbsp;</div><!-- 4 -->
+                </div>
+                <div class="row">
+                    <div class="box">&nbsp;</div><!-- 5 -->
+                </div>
+                <div class="row">
+                    <div class="box">&nbsp;</div><!-- 6 -->
+                </div>
+            </div>
+            <div id="right" class="hanoi-pin  ">
+                <div class="row">
+                    <div class="box">&nbsp;</div> <!-- 1 -->
+                </div>
+                <div class="row">
+                    <div class="box">&nbsp;</div><!-- 2 -->
+                </div>
+                <div class="row">
+                    <div class="box">&nbsp;</div><!-- 3 -->
+                </div>
+                <div class="row">
+                    <div class="box">&nbsp;</div>
+                </div> <!-- 4 -->
+                <div class="row">
+                    <div class="box">&nbsp;</div><!-- 5 -->
+                </div>
+                <div class="row">
+                    <div class="box">&nbsp;</div><!-- 6 -->
+                </div>
+            </div>
+        </div>
+        <br>
+
+
+    </div>
+
+
+
+
+
+</body>
+
+
+<script>
+    // document.addEventListener('DOMContentLoaded', (event) => {
+
+    function handleDragStart(e) {
+        this.style.opacity = '0.4';
+        dragSrcEl = this;
+
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/html', this.innerHTML);
+    }
+
+    function handleDragEnd(e) {
+        this.style.opacity = '1';
+
+        items.forEach(function (item) {
+            item.classList.remove('over'); //over is only to have the border with dots
+        });
+    }
+
+    function handleDragOver(e) {
+        if (e.preventDefault) {
+            e.preventDefault(); //avoid if drag an element with an url, avoid the regular behaviour to open  the link
+        }
+
+        return false;
+    }
+
+    function handleDragEnter(e) {
+        this.classList.add('over'); //over is only to have the border with dots
+    }
+
+    function handleDragLeave(e) {
+        this.classList.remove('over');//over is only to have the border with dots
+    }
+
+    function handleDrop(e) {
+
+        e.stopPropagation(); // stops the browser from redirecting.
+
+
+        if (dragSrcEl !== this) {
+            dragSrcEl.innerHTML = this.innerHTML;
+            dragSrcEl.classList.remove("disc")
+
+
+            this.innerHTML = e.dataTransfer.getData('text/html');
+            this.classList.add("disc")
+            this.draggable = true;
+            this.id = dragSrcEl.id
+
+            console.log(dragSrcEl.removeAttribute('id'))
+
+
+        }
+
+        return false;
+    }
+
+    let items = document.querySelectorAll('.box');
+    items.forEach(function (item) {
+        item.addEventListener('dragstart', handleDragStart);
+        item.addEventListener('dragend', handleDragEnd);
+        item.addEventListener('dragover', handleDragOver); //Visual helper
+        item.addEventListener('dragenter', handleDragEnter); //Visual helper
+        item.addEventListener('dragleave', handleDragLeave);  //Visual helper
+        item.addEventListener('drop', handleDrop);
+    });
+    // });
+
+</script>
+
+<script>
+
+    function towerofHanoi(n, fromRod, toRod, usingRod) {
+        debugger;
+        if (n == 1) {
+            console.log(`Take disk 1 from rod ${fromRod} to ${toRod}`)
+            return
+        }
+        towerofHanoi(n - 1, fromRod, usingRod, toRod)
+        console.log(`Take disk ${n} from rod ${fromRod} to ${toRod}`)
+        towerofHanoi(n - 1, usingRod, toRod, fromRod)
+    }
+
+    //towerofHanoi(3, `A`, `C`, `B`)
+
+</script>
+
+
+
+
+
+</html>
